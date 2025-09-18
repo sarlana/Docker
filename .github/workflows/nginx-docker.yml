@@ -13,8 +13,8 @@ jobs:
         run: docker build -t my-nginx
       - name: Run docker container
         run: docker run -d -p 8080:80 --name nginx-container my-nginx
+      - name : test sleep time
+        run: sleep 30
       - name: test Nginx response
-        run: |
-        sleep 10
-        curl -I http://localhost:8080
+        run: curl -I http://localhost:8080
       
