@@ -12,7 +12,7 @@ jobs:
       - name: setup docker buildx
         uses: docker/setup-buildx-action@v3
       - name: set up Docker image
-        run: docker build -t my-nginx
+        run: docker build -t my-nginx .
       - name: Run docker container
         run: docker run -d -p 8080:80 --name nginx-container my-nginx
       - name : test sleep time
