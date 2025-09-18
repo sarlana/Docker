@@ -1,0 +1,20 @@
+name: Build and Run Nginx Docker
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/hello-world-docker-action@v2
+      - name: set up Docker image
+        run: docker build -t my-nginx
+      - name: Run docker container
+        run: docker run -d -p 8080:80 --name nginx-container my-nginx
+      - name: test Nginx response
+        run: |
+        sleep 10
+        curl -I http://localhost:8080
+      
